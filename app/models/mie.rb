@@ -18,5 +18,7 @@ class Mie < ActiveHash::Base
     { id: 16, name: 'その他' },
   ]
 
+  include ActiveHash::Associations
+  has_many :schedules
 
 end
