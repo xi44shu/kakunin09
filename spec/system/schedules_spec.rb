@@ -10,7 +10,30 @@ RSpec.describe "Schedules", type: :system do
   end
 
   context '新規予約登録ができるとき'do
-    it 'ログインしたユーザーは新規予約登録できる' do
+    it 'ログインしたユーザーはトップページから新規予約登録できる' do
+      # ログインする
+      visit new_user_session_path
+      fill_in 'Name', with: @user.name
+      fill_in 'Password', with: @user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # フォームに情報を入力する
+      fill_in 'schedule[scheduled_date]', with: @schedule.scheduled_date
+      select "午前", from: 'schedule[time_zone_id]'
+      select "小", from: 'schedule[size_id]'
+      select "仮予約", from: 'schedule[accuracy_id]'
+      select "---", from: 'schedule[mie_id]'
+      select "営業", from: 'schedule[first_contact_id]'
+      # 送信するとScheduleモデルのカウントが1上がることを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Schedule.count }.by(1)
+      # トップページに遷移する
+      expect(current_path).to eq(root_path)
+      # 予約詳細ページへのリンクがあることを確認する
+      expect(page).to have_content('予約詳細')      
+    end
+    it 'ログインしたユーザーは新規予約のページから新規予約登録できる' do
       # ログインする
       visit new_user_session_path
       fill_in 'Name', with: @user.name
@@ -44,6 +67,23 @@ RSpec.describe "Schedules", type: :system do
       visit root_path
       # 新規投稿ページへのリンクがないことを確認する
       expect(page).to have_no_content('新規予約')
+    end
+    it 'ログインしていないとトップページから新規予約登録できない' do
+      # トップページに遷移する
+      visit root_path
+      # フォームに情報を入力する
+      fill_in 'schedule[scheduled_date]', with: @schedule.scheduled_date
+      select "午前", from: 'schedule[time_zone_id]'
+      select "小", from: 'schedule[size_id]'
+      select "仮予約", from: 'schedule[accuracy_id]'
+      select "---", from: 'schedule[mie_id]'
+      select "営業", from: 'schedule[first_contact_id]'
+      # 登録ボタンを押してもScheduleモデルのカウントは変わらないことを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Schedule.count }.by(0)      
+      # ログインページへ遷移したことを確認する
+      expect(current_path).to eq(new_user_session_path)
     end
   end
 end
@@ -109,7 +149,7 @@ RSpec.describe "詳細02", type: :system do
         # 予約詳細ページへのリンクがないことを確認する
         expect(page).to have_no_content('予約詳細')
       end
-      it '予約はあるが、日程が過去のとき' do
+      it '予約はあるが、scheduled_dateが昨日以前のとき' do
         # ログインする
         visit new_user_session_path
         fill_in 'Name', with: @user.name
@@ -136,7 +176,7 @@ RSpec.describe "詳細02", type: :system do
         # 予約詳細ページへのリンクがないことを確認する
         expect(page).to have_no_content('予約詳細')
         end
-        it '予約はあるが、日程が一覧表の範囲より先のとき' do
+        it '予約はあるが、日程が一覧表の範囲より先の日付のとき' do
         # ログインする
         visit new_user_session_path
         fill_in 'Name', with: @user.name
