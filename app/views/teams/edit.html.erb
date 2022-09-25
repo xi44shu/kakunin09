@@ -1,4 +1,4 @@
-<%= form_with model: @team, url:teams_path, local: true do |f| %>
+<%= form_with model: @team, url:team_path, local: true do |f| %>
 <%= f.text_field :team_name, placeholder:"班名", maxlength:"40" %>
 <%= f.text_field :affiliation, placeholder:"所属", maxlength:"40" %>
 <%= f.radio_button :work, :true %>
