@@ -86,6 +86,12 @@ RSpec.describe "編集", type: :system do
       # 班一覧ページへのボタンがないことを確認する
       expect(page).to have_no_content('班一覧')
     end
+    it 'ログインしていないと班詳細ページに遷移できない' do
+      # 班詳細ページに遷移する
+      visit edit_team_path(@team.id)
+      # ログインページへ遷移したことを確認する
+      expect(current_path).to eq(new_user_session_path)
+    end
   end
 end
 
