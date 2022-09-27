@@ -1,0 +1,9 @@
+<%= form_with model: @trading_company, url: trading_companies_path, local: true do |f| %>
+<%= f.label :商社名を入力, class: 'lavel' %>
+<%= f.text_field :tc_name, class: 'tc_name-input', placeholder:"商社名" %>
+<%= f.label :担当者名を入力, class: 'lavel' %>
+<%= f.text_field :tc_contact_person, class: 'tc_contact_person-input', placeholder:"担当者名" %>
+<%= f.label :電話番号を入力, class: 'lavel' %>
+<%= f.text_field :tc_telephone, class: 'tc_telephone-input', placeholder:"半角ハイフンなし" %>
+<%= f.submit "登録する" %>
+<% end %>
