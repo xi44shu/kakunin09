@@ -14,5 +14,10 @@
 <%= f.collection_select(:mie_id, Mie.all, :id, :name, {}, {class:"mie-select"}) %>
 <%= f.label :連絡元を選択, class: 'lavel' %>
 <%= f.collection_select(:first_contact_id, FirstContact.all, :id, :name, {}, {class:"first_contact-select"}) %>
+
+<div class="hissu_input">任意項目</div>
+<%= f.label :商社を選択, class: 'lavel' %>
+<%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_name, {}, {class:"team-select"}) %>
+
 <%= f.submit "登録する" %>
 <% end %>

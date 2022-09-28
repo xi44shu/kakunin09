@@ -1,0 +1,12 @@
+
+<header class="header">
+      <div class="nav__right">
+          <%= link_to "新規商社作成", new_trading_company_path, class: :nav__btn %>
+      </div>
+
+<% @trading_companies.each do |tc| %>
+  <%= link_to tc.id, edit_trading_company_path(tc.id), class: :nav__btn %>
+  <%= tc.tc_name %>
+  <%= tc.tc_contact_person %>
+  <%= tc.tc_telephone %>
+  <%end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_24_144500) do
+ActiveRecord::Schema.define(version: 2022_09_28_144500) do
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "scheduled_date", null: false
@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(version: 2022_09_24_144500) do
     t.integer "size_id", null: false
     t.integer "mie_id", null: false
     t.integer "first_contact_id", null: false
+    t.bigint "trading_company_id"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_schedules_on_team_id"
+    t.index ["trading_company_id"], name: "index_schedules_on_trading_company_id"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
@@ -32,6 +34,14 @@ ActiveRecord::Schema.define(version: 2022_09_24_144500) do
     t.string "team_name", null: false
     t.string "affiliation", null: false
     t.boolean "work", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trading_companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tc_name", null: false
+    t.string "tc_contact_person", null: false
+    t.string "tc_telephone", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -51,5 +61,6 @@ ActiveRecord::Schema.define(version: 2022_09_24_144500) do
   end
 
   add_foreign_key "schedules", "teams"
+  add_foreign_key "schedules", "trading_companies"
   add_foreign_key "schedules", "users"
 end

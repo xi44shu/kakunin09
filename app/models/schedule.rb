@@ -7,6 +7,7 @@ class Schedule < ApplicationRecord
   belongs_to :accuracy
   belongs_to :first_contact
   belongs_to :mie
+  belongs_to :trading_company
 
   with_options presence: true do
     validates :scheduled_date, uniqueness: { scope: [:time_zone_id, :team_id], message: "is not free" }
