@@ -9,5 +9,6 @@ FactoryBot.define do
     content          { Faker::Lorem.sentence }
     association :user
     association :team
+    association :trading_company
   end
 end

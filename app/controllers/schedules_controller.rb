@@ -14,6 +14,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
+
     @schedule = Schedule.new(schedule_params)
     if @schedule.save
       redirect_to root_path
@@ -48,7 +49,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:scheduled_date, :time_zone_id, :team_id, :size_id, :mie_id, :accuracy_id, :first_contact_id).merge(user_id: current_user.id)
+    params.require(:schedule).permit(:scheduled_date, :time_zone_id, :team_id, :size_id, :mie_id, :accuracy_id, :first_contact_id, :trading_company_id).merge(user_id: current_user.id)
   end  
 
   def get_week

@@ -15,5 +15,7 @@
 <%= f.collection_select(:mie_id, Mie.all, :id, :name, {}, {class:"mie-select"}) %>
 <%= f.label :連絡元を選択, class: 'lavel' %>
 <%= f.collection_select(:first_contact_id, FirstContact.all, :id, :name, {}, {class:"first_contact-select"}) %>
+<%= f.label :商社を選択, class: 'lavel' %>
+<%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_name, {}, {class:"trading_company-select"}) %>
 <%= f.submit "予約を変更する" %>
 <% end %>

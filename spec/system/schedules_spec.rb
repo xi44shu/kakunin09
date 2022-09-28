@@ -12,7 +12,8 @@ RSpec.describe "Schedules", type: :system do
     @team = FactoryBot.build(:team)
     @team.work = 'true'
     @team.save
-    @schedule = FactoryBot.build(:schedule, user_id:@user.id, team_id:@team.id)
+    @trading_company = FactoryBot.create(:trading_company)
+    @schedule = FactoryBot.build(:schedule, user_id:@user.id, team_id:@team.id, trading_company_id:@trading_company.id)
   end
 
   context '新規予約登録ができるとき'do
@@ -73,12 +74,16 @@ RSpec.describe "Schedules", type: :system do
   end
   context '新規予約登録ができないとき'do
     it 'ログインしていないと新規予約登録ページに遷移できない' do
+      # Basic認証を通過する
+      basic_pass root_path
       # トップページに遷移する
       visit root_path
       # 新規投稿ページへのリンクがないことを確認する
       expect(page).to have_no_content('新規予約')
     end
     it 'ログインしていないとトップページから新規予約登録できない' do
+      # Basic認証を通過する
+      basic_pass root_path
       # トップページに遷移する
       visit root_path
       # フォームに情報を入力する
@@ -105,7 +110,8 @@ RSpec.describe "詳細01", type: :system do
     @team = FactoryBot.build(:team)
     @team.work = 'true'
     @team.save
-    @schedule = FactoryBot.create(:schedule, user_id:@user.id, team_id:@team.id)
+    @trading_company = FactoryBot.create(:trading_company)
+    @schedule = FactoryBot.create(:schedule, user_id:@user.id, team_id:@team.id, trading_company_id:@trading_company.id)
   end
 
   context '予約の詳細が確認できるとき'do
@@ -126,6 +132,8 @@ RSpec.describe "詳細01", type: :system do
       expect(current_path).to eq(schedule_path(@schedule.id))
     end
     it 'ログインしていなくても詳細ページに遷移して予約の詳細が表示される' do
+      # Basic認証を通過する
+      basic_pass root_path
       # トップページに遷移する
       visit root_path
       # 予約詳細ページへのリンクがあることを確認する
@@ -143,7 +151,8 @@ RSpec.describe "詳細02", type: :system do
     @team = FactoryBot.build(:team)
     @team.work = 'true'
     @team.save
-    @schedule = FactoryBot.build(:schedule, user_id:@user.id, team_id:@team.id)
+    @trading_company = FactoryBot.create(:trading_company)
+    @schedule = FactoryBot.build(:schedule, user_id:@user.id, team_id:@team.id, trading_company_id:@trading_company.id)
   end
 
   context '予約の詳細が確認できないとき'do
@@ -230,7 +239,8 @@ RSpec.describe "編集", type: :system do
     @team = FactoryBot.build(:team)
     @team.work = 'true'
     @team.save
-    @schedule = FactoryBot.create(:schedule, user_id:@user.id, team_id:@team.id)
+    @trading_company = FactoryBot.create(:trading_company)
+    @schedule = FactoryBot.create(:schedule, user_id:@user.id, team_id:@team.id, trading_company_id:@trading_company.id)
   end
 
   context '予約の編集ができるとき'do
@@ -266,6 +276,8 @@ RSpec.describe "編集", type: :system do
   end
   context '予約編集登録ができないとき'do
     it 'ログインしていないと予約編集ページに遷移できない' do
+      # Basic認証を通過する
+      basic_pass root_path
       # トップページに遷移する
       visit root_path
       # 新規投稿ページへのリンクがないことを確認する
@@ -280,7 +292,8 @@ RSpec.describe "削除", type: :system do
     @team = FactoryBot.build(:team)
     @team.work = 'true'
     @team.save
-    @schedule = FactoryBot.create(:schedule, user_id:@user.id, team_id:@team.id)
+    @trading_company = FactoryBot.create(:trading_company)
+    @schedule = FactoryBot.create(:schedule, user_id:@user.id, team_id:@team.id, trading_company_id:@trading_company.id)
   end
 
   context '予約の削除ができるとき'do
@@ -307,6 +320,8 @@ RSpec.describe "削除", type: :system do
   end
   context '予約削除ができないとき'do
     it 'ログインしていないと予約削除ページに遷移できない' do
+      # Basic認証を通過する
+      basic_pass root_path
       # トップページに遷移する
       visit root_path
       # 新規投稿ページへのリンクがないことを確認する

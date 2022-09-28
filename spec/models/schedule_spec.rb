@@ -60,6 +60,11 @@ RSpec.describe Schedule, type: :model do
         @schedule.valid?
         expect(@schedule.errors.full_messages).to include("First contact can't be blank")
       end
+      it 'trading_companyが紐づいていないと登録できない' do
+        @schedule.trading_company = nil
+        @schedule.valid?
+        expect(@schedule.errors.full_messages).to include("Trading company must exist")
+      end
     end
   end
 end
