@@ -13,6 +13,8 @@ RSpec.describe "Users", type: :system do
   end
   context 'ユーザー新規登録ができるとき' do 
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # トップページに移動する
       visit root_path
       # トップページにサインアップページへ遷移するボタンがあることを確認する
@@ -39,6 +41,8 @@ RSpec.describe "Users", type: :system do
   end
   context 'ユーザー新規登録ができないとき' do
     it '誤った情報ではユーザー新規登録ができずに新規登録ページへ戻ってくる' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # トップページに移動する
       visit root_path
       # トップページにサインアップページへ遷移するボタンがあることを確認する
@@ -66,6 +70,8 @@ RSpec.describe "ログイン", type: :system do
   end
   context 'ログインができるとき' do 
     it '正しい情報を入力すればログインができてトップページに移動する' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # トップページに移動する
       visit root_path
       # トップページにログインページへ遷移するボタンがあることを確認する
@@ -88,6 +94,8 @@ RSpec.describe "ログイン", type: :system do
   end
   context 'ログインができないとき' do
     it '誤った情報ではログインができずに新規登録ページへ戻ってくる' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # トップページに移動する
       visit root_path
       # トップページにログインページへ遷移するボタンがあることを確認する
