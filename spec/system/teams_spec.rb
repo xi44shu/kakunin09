@@ -1,5 +1,11 @@
 require 'rails_helper'
 
+def basic_pass(path)
+  username = ENV["BASIC_AUTH_USER"]
+  password = ENV["BASIC_AUTH_PASSWORD"]
+  visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
+end
+
 RSpec.describe "Teams", type: :system do
   before do
     @user = FactoryBot.create(:user)
@@ -8,6 +14,8 @@ RSpec.describe "Teams", type: :system do
 
   context 'チームの新規登録ができるとき'do
     it 'ログインしたユーザーはチーム新規登録できる' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # ログインする
       visit new_user_session_path
       fill_in 'Name', with: @user.name
@@ -58,6 +66,8 @@ RSpec.describe "編集", type: :system do
 
   context 'チームの編集ができるとき'do
     it 'ログインしたユーザーはチームの編集ができる' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # ログインする
       visit new_user_session_path
       fill_in 'Name', with: @user.name

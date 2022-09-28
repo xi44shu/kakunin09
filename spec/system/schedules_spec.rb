@@ -1,5 +1,11 @@
 require 'rails_helper'
 
+def basic_pass(path)
+  username = ENV["BASIC_AUTH_USER"]
+  password = ENV["BASIC_AUTH_PASSWORD"]
+  visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
+end
+
 RSpec.describe "Schedules", type: :system do
   before do
     @user = FactoryBot.create(:user)
@@ -11,6 +17,8 @@ RSpec.describe "Schedules", type: :system do
 
   context '新規予約登録ができるとき'do
     it 'ログインしたユーザーはトップページから新規予約登録できる' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # ログインする
       visit new_user_session_path
       fill_in 'Name', with: @user.name
@@ -34,6 +42,8 @@ RSpec.describe "Schedules", type: :system do
       expect(page).to have_content('予約詳細')      
     end
     it 'ログインしたユーザーは新規予約のページから新規予約登録できる' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # ログインする
       visit new_user_session_path
       fill_in 'Name', with: @user.name
@@ -100,6 +110,8 @@ RSpec.describe "詳細01", type: :system do
 
   context '予約の詳細が確認できるとき'do
     it 'ログインしているユーザーは詳細ページに遷移して予約の詳細が表示される' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # ログインする
       visit new_user_session_path
       fill_in 'Name', with: @user.name
@@ -136,6 +148,8 @@ RSpec.describe "詳細02", type: :system do
 
   context '予約の詳細が確認できないとき'do
       it '予約がないとき' do
+        # Basic認証を通過する
+        basic_pass new_user_session_path
         # ログインする
         visit new_user_session_path
         fill_in 'Name', with: @user.name
@@ -150,6 +164,8 @@ RSpec.describe "詳細02", type: :system do
         expect(page).to have_no_content('予約詳細')
       end
       it '予約はあるが、scheduled_dateが昨日以前のとき' do
+        # Basic認証を通過する
+        basic_pass new_user_session_path
         # ログインする
         visit new_user_session_path
         fill_in 'Name', with: @user.name
@@ -177,6 +193,8 @@ RSpec.describe "詳細02", type: :system do
         expect(page).to have_no_content('予約詳細')
         end
         it '予約はあるが、日程が一覧表の範囲より先の日付のとき' do
+        # Basic認証を通過する
+        basic_pass new_user_session_path
         # ログインする
         visit new_user_session_path
         fill_in 'Name', with: @user.name
@@ -217,6 +235,8 @@ RSpec.describe "編集", type: :system do
 
   context '予約の編集ができるとき'do
     it 'ログインしたユーザーは予約の編集ができる' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # ログインする
       visit new_user_session_path
       fill_in 'Name', with: @user.name
@@ -265,6 +285,8 @@ RSpec.describe "削除", type: :system do
 
   context '予約の削除ができるとき'do
     it 'ログインしたユーザーは予約の削除ができる' do
+      # Basic認証を通過する
+      basic_pass new_user_session_path
       # ログインする
       visit new_user_session_path
       fill_in 'Name', with: @user.name
