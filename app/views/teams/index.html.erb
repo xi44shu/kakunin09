@@ -4,8 +4,17 @@
           <%= link_to "新規班作成", new_team_path, class: :nav__btn %>
       </div>
 
-<% @teams.each do |team| %>
-  <%= link_to team.team_name, edit_team_path(team.id), class: :nav__btn %>
-  <%= team.affiliation %>
-  <%= team.work %>
-  <%end %>
+<body>
+  <div class="trading_companies_index">
+    <div class="trading_companies_index_title">チーム名/所属/状態</div>
+      <% @teams.each do |team| %>
+        <div>
+          <%= link_to team.team_name, edit_team_path(team.id), class: :nav__btn %>/
+          <%= team.affiliation %>/
+          <% if team.work == true %>稼働中
+          <%else team.work == false%>休み  
+          <%end %>
+        </div>
+      <%end %>
+  </div>
+</body>
