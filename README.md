@@ -60,8 +60,8 @@ https://docs.google.com/spreadsheets/d/1iHOls9Kz-P6k_k65_rZjHxKLZwUrB6q9XcHaKZRX
 ![オリジナルアプリ画面遷移 (1)-kakunin09画面遷移のコピー drawio (2)](https://user-images.githubusercontent.com/110109166/192134864-f1bbd343-e3eb-4810-88ff-972ad1d38aec.png)
 
 # 開発環境
-- Ruby
-- Ruby on Rails
+- Ruby 2.6.5
+- Ruby on Rails 6.0.0
 - MySQL
 - Github
 - Visual Studio Code
