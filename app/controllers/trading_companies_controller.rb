@@ -10,11 +10,9 @@ class TradingCompaniesController < ApplicationController
   end
 
   def create
-    @trading_company = TradingCompany.new(tradingcompany_params)
-
-    binding.pry
+    @trading_company = TradingCompany.new(trading_company_params)
     if @trading_company.save
-      redirect_to root_path
+      redirect_to trading_companies_path
     else
       render :new
     end
@@ -26,7 +24,7 @@ class TradingCompaniesController < ApplicationController
 
   def update
     @trading_company = TradingCompany.find(params[:id])
-    if @@trading_company.update(trading_company_params)
+    if @trading_company.update(trading_company_params)
       redirect_to trading_companies_path
     else
       render :edit
@@ -35,7 +33,7 @@ class TradingCompaniesController < ApplicationController
 
   private
 
-  def tradingcompany_params
+  def trading_company_params
     params.require(:trading_company).permit(:tc_name, :tc_contact_person, :tc_telephone )
   end
 
