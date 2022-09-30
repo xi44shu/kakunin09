@@ -17,5 +17,11 @@
 <%= f.collection_select(:first_contact_id, FirstContact.all, :id, :name, {}, {class:"first_contact-select"}) %>
 <%= f.label :商社を選択, class: 'lavel' %>
 <%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_name, {}, {class:"trading_company-select"}) %>
+<div class="ninni_input">任意項目</div>
+<%= f.label :元請情報を入力, class: 'lavel' %>
+<%= f.text_area :prime_contractor, class: 'prime_contractor-input', placeholder:"元請名、担当者名、連絡先などを入力" %>
+<%= f.label :コメントを入力, class: 'lavel' %>
+<%= f.text_area :content, class: 'content-input', placeholder:"注意事項などを入力" %>
+
 <%= f.submit "予約を変更する" %>
 <% end %>

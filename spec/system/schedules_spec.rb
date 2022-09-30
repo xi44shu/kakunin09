@@ -267,6 +267,8 @@ RSpec.describe "編集", type: :system do
         select "本予約", from: 'schedule[accuracy_id]'
         select "伊勢", from: 'schedule[mie_id]'
         select "商社", from: 'schedule[first_contact_id]'
+        fill_in 'schedule[prime_contractor]', with: @schedule.prime_contractor
+        fill_in 'schedule[content]', with: @schedule.content
         # click_button '予約を変更する'
         # 編集してもTweetモデルのカウントは変わらないことを確認する
         expect{
