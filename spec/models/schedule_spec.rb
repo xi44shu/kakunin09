@@ -10,6 +10,10 @@ RSpec.describe Schedule, type: :model do
       it '入力項目が存在すれば登録できる' do
         expect(@schedule).to be_valid
       end
+      it 'prime_contractorがなくても登録できる' do
+        @schedule.prime_contractor = ""
+        expect(@schedule).to be_valid
+      end
       it 'contentがなくても登録できる' do
         @schedule.content = ""
         expect(@schedule).to be_valid
