@@ -31,7 +31,6 @@ RSpec.describe "Schedules", type: :system do
       select "午前", from: 'schedule[time_zone_id]'
       select "小", from: 'schedule[size_id]'
       select "仮予約", from: 'schedule[accuracy_id]'
-      select "---", from: 'schedule[mie_id]'
       select "営業", from: 'schedule[first_contact_id]'
       # 送信するとScheduleモデルのカウントが1上がることを確認する
       expect{
@@ -60,7 +59,6 @@ RSpec.describe "Schedules", type: :system do
       select "午前", from: 'schedule[time_zone_id]'
       select "小", from: 'schedule[size_id]'
       select "仮予約", from: 'schedule[accuracy_id]'
-      select "---", from: 'schedule[mie_id]'
       select "営業", from: 'schedule[first_contact_id]'
       # 送信するとScheduleモデルのカウントが1上がることを確認する
       expect{
@@ -91,7 +89,6 @@ RSpec.describe "Schedules", type: :system do
       select "午前", from: 'schedule[time_zone_id]'
       select "小", from: 'schedule[size_id]'
       select "仮予約", from: 'schedule[accuracy_id]'
-      select "---", from: 'schedule[mie_id]'
       select "営業", from: 'schedule[first_contact_id]'
       # 登録ボタンを押してもScheduleモデルのカウントは変わらないことを確認する
       expect{
@@ -190,7 +187,6 @@ RSpec.describe "詳細02", type: :system do
         select "午前", from: 'schedule[time_zone_id]'
         select "小", from: 'schedule[size_id]'
         select "仮予約", from: 'schedule[accuracy_id]'
-        select "---", from: 'schedule[mie_id]'
         select "営業", from: 'schedule[first_contact_id]'
         # 送信するとScheduleモデルのカウントが1上がることを確認する
         expect{
@@ -219,7 +215,6 @@ RSpec.describe "詳細02", type: :system do
         select "午前", from: 'schedule[time_zone_id]'
         select "小", from: 'schedule[size_id]'
         select "仮予約", from: 'schedule[accuracy_id]'
-        select "---", from: 'schedule[mie_id]'
         select "営業", from: 'schedule[first_contact_id]'
         # 送信するとScheduleモデルのカウントが1上がることを確認する
         expect{
