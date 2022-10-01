@@ -17,6 +17,8 @@
 <%= f.collection_select(:first_contact_id, FirstContact.all, :id, :name, {}, {class:"first_contact-select"}) %>
 <%= f.label :商社を選択, class: 'lavel' %>
 <%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_name, {}, {class:"trading_company-select"}) %>
+<%= f.label :開始時間を選択, class: 'lavel' %>
+<%= f.collection_select(:start_time_id, StartTime.all, :id, :name, {}, {class:"start_time-select"}) %>
 <%= f.submit "登録する" %>
 <% end %>
 
