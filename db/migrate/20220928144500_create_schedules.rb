@@ -10,6 +10,7 @@ class CreateSchedules < ActiveRecord::Migration[6.0]
       t.integer :mie_id,             null: false
       t.integer :first_contact_id,   null: false
       t.references :trading_company, foreign_key: true
+      t.integer :start_time_id
       t.text :prime_contractor
       t.text :content
       t.timestamps

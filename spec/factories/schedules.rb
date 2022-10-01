@@ -6,6 +6,7 @@ FactoryBot.define do
     size_id          { '2' }            
     mie_id           { '2' }             
     first_contact_id { '2' }   
+    start_time_id    { '2' }             
     prime_contractor { Faker::Lorem.sentence }
     content          { Faker::Lorem.sentence }
     association :user

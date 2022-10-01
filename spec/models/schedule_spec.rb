@@ -10,6 +10,10 @@ RSpec.describe Schedule, type: :model do
       it '入力項目が存在すれば登録できる' do
         expect(@schedule).to be_valid
       end
+      it 'start_timeが「後で選択」が選択されていても登録できる' do
+        @schedule.start_time_id = 1
+        expect(@schedule).to be_valid
+      end
       it 'prime_contractorがなくても登録できる' do
         @schedule.prime_contractor = ""
         expect(@schedule).to be_valid

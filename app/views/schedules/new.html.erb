@@ -18,6 +18,8 @@
 <div class="ninni_input">任意項目</div>
 <%= f.label :商社を選択, class: 'lavel' %>
 <%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_name, {}, {class:"team-select"}) %>
+<%= f.label :開始時間を選択, class: 'lavel' %>
+<%= f.collection_select(:start_time_id, StartTime.all, :id, :name, {}, {class:"start_time-select"}) %>
 <%= f.label :元請を入力, class: 'lavel' %>
 <%= f.text_area :prime_contractor, class: 'prime_contractor-input' %>
 <%= f.label :コメントを入力, class: 'lavel' %>

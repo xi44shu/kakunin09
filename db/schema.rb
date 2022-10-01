@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_09_28_144500) do
     t.integer "mie_id", null: false
     t.integer "first_contact_id", null: false
     t.bigint "trading_company_id"
+    t.integer "start_time_id"
     t.text "prime_contractor"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
