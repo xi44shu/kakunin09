@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # coding: utf-8
-User.create(name:"テスト",admin:"true",email:"test@00",password:"test00",encrypted_password:"test00")
+# User.create(name:"テスト",admin:"true",email:"test@00",password:"test00",encrypted_password:"test00")
 TradingCompany.create(tc_name:"後で選択",tc_contact_person:"名無し",tc_telephone:"00000000000")
 Team.create(team_name:"い",affiliation:"いろは",work:"true")
