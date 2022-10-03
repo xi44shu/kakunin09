@@ -54,7 +54,8 @@ https://docs.google.com/spreadsheets/d/1iHOls9Kz-P6k_k65_rZjHxKLZwUrB6q9XcHaKZRX
 - 予約した工事の検索機能の実装
 
 # データベース設計
-![オリジナルアプリER-kakunin09 drawio (1)](https://user-images.githubusercontent.com/110109166/192133954-58527187-7c36-4567-9750-0a7c02678fc0.png)
+![221003 kakunin09ER](https://user-images.githubusercontent.com/110109166/193564488-173faeb5-cb9b-4592-84fa-b2bad48ecf59.png)
+
 
 # 画面遷移図
 ![オリジナルアプリ画面遷移 (1)-kakunin09画面遷移のコピー drawio (2)](https://user-images.githubusercontent.com/110109166/192134864-f1bbd343-e3eb-4810-88ff-972ad1d38aec.png)
@@ -81,6 +82,8 @@ https://docs.google.com/spreadsheets/d/1iHOls9Kz-P6k_k65_rZjHxKLZwUrB6q9XcHaKZRX
 
 % rails db:migrate
 
+% rails db:seed
+（ユーザー名:テスト,email:test@00,password:test00）
 # 工夫したポイント
 - 入力の手間を減らす工夫
   - 電話に出ながら片手で操作できるよう、予約に必須の項目は文字入力を無くしました
