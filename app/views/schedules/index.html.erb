@@ -59,7 +59,7 @@
                   <% when cal.accuracy_id == 3 %> 
                       <div class="content_body_top">
                         <div class="content_detail">
-                          時間:<%#= StartTime.find(cal.start_time_id).name%><br>
+                          時間:<%= StartTime.find(cal.start_time_id).name%><br>
                           場所:<%= Mie.find(cal.mie_id).name%>
                         </div>
                       </div>
@@ -111,7 +111,7 @@
                   <div class="content_body">
                       <% if cal.accuracy_id == 3 %> 
                         <div class="content_body_top">
-                          <div class="content_detail">時間:<%#= StartTime.find(cal.start_time_id).name%></div>
+                          <div class="content_detail">時間:<%= StartTime.find(cal.start_time_id).name%></div>
                           <div class="content_detail">場所:<%= Mie.find(cal.mie_id).name%></div>
                         </div>
                         <div class="content_body_middle">
