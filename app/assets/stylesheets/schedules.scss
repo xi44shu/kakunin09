@@ -132,4 +132,6 @@ body {
 
 .item-date{
   text-align: center;
+  white-space: nowrap;
+  overflow: scroll;
 }
