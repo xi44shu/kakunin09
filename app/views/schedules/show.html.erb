@@ -1,17 +1,42 @@
-予約日:<%= @schedule.scheduled_date %>
-時間帯:<%= @schedule.time_zone.name %>
-班:<%= @schedule.team.team_name %>
-サイズ:<%= @schedule.size.name %>
-予約確度:<%= @schedule.accuracy.name %>
-場所:<%= @schedule.mie.name %>
-連絡元:<%= @schedule.first_contact.name %>
-商社:<%= @schedule.trading_company.tc_name %>
-開始時間:<%= @schedule.start_time.name %>
-元請:<%= @schedule.prime_contractor %>
-コメント:<%= @schedule.content %>
+<p id="notice"><%= notice %></p>
+<h1>予約詳細</h1>
 
-<%= link_to "予約を変更", edit_schedule_path(@schedule.id), class: :nav__btn %>
-<%= link_to "内容をコピー", edit_schedule_path(@schedule.id), class: :nav__btn %>
+<table frame=”box” border=”1″>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>予約日</th>
+      <th>班</th>
+      <th>時間帯</th>
+      <th>開始時間</th>
+      <th>場所</th>
+      <th>サイズ</th>
+      <th>予約確度</th>
+      <th>商社</th>
+      <th>元請</th>
+      <th>連絡元</th>
+      <th>コメント</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-
-<%= link_to "予約を削除", schedule_path(@schedule.id), method: :delete,  class: :nav__btn  %>
+  <tbody>
+      <tr>
+        <td><%= @schedule.id %></td>
+        <td><%= @schedule.scheduled_date %></td>
+        <td><%= @schedule.team.team_name %></td>
+        <td><%= @schedule.time_zone.name %></td>
+        <td><%= @schedule.start_time.name %></td>
+        <td><%= @schedule.mie.name %></td>
+        <td><%= @schedule.size.name %></td>
+        <td><%= @schedule.accuracy.name %></td>
+        <td><%= @schedule.trading_company.tc_name %></td>
+        <td><%= @schedule.prime_contractor %></td>
+        <td><%= @schedule.first_contact.name %></td>
+        <td><%= @schedule.content %></td>
+        <td><%= link_to '変更', edit_schedule_path(@schedule.id),  class: :nav__btn  %></td>
+        <td><%= link_to 'コピー', copy_schedule_path(@schedule.id),  class: :nav__btn  %></td>
+        <td><%= link_to '削除', schedule_path(@schedule.id), method: :delete, data: { confirm: '本当に削除しますか?' },  class: :nav__btn  %></td>
+      </tr>
+  </tbody>
+</table>
