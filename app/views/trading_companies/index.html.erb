@@ -1,12 +1,30 @@
+<p id="notice"><%= notice %></p>
+<h1>商社一覧</h1>
 
-<header class="header">
-      <div class="nav__right">
-          <%= link_to "新規商社作成", new_trading_company_path, class: :nav__btn %>
-      </div>
+<table>
+  <thead>
+    <tr>
+      <th>商社名</th>
+      <th>担当者</th>
+      <th>電話番号</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<% @trading_companies.each do |tc| %>
-  <%= link_to tc.id, edit_trading_company_path(tc.id), class: :nav__btn %>
-  <%= tc.tc_name %>
-  <%= tc.tc_contact_person %>
-  <%= tc.tc_telephone %>
-  <%end %>
+  <tbody>
+    <% @trading_companies.each do |trading_company| %>
+    <% unless trading_company.id == 1 %>
+      <tr>
+        <td><%= trading_company.tc_name %></td>
+        <td><%= trading_company.tc_contact_person %></td>
+        <td><%= trading_company.tc_telephone %></td>
+        <td><%= link_to '編集', edit_trading_company_path(trading_company) %></td>
+          <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新しく商社を登録', new_trading_company_path %>
