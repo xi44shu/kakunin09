@@ -28,10 +28,10 @@ RSpec.describe "Teams", type: :system do
       click_link '班一覧'      
       # 班一覧ページに遷移する
       expect(current_path).to eq(teams_path)
-      # 新規班作成ページへのボタンがあることを確認する
-      expect(page).to have_content('新規班作成')
-      # 新規班作成ページへのボタンを押す
-      click_link '新規班作成'      
+      # 新しい班を登録ページへのボタンがあることを確認する
+      expect(page).to have_content('新しい班を登録')
+      # 新しい班を登録ページへのボタンを押す
+      click_link '新しい班を登録'      
       # 作成ページに遷移する
       expect(current_path).to eq(new_team_path)
       # フォームに情報を入力する
@@ -76,9 +76,9 @@ RSpec.describe "編集", type: :system do
       # 班一覧ページに遷移する
       visit teams_path
       # 班の編集ページへのリンクがあることを確認する
-      expect(page).to have_content(@team.team_name)
+      expect(page).to have_content('編集')
       # 班の編集ページへのリンクを押す
-      click_link @team.team_name      
+      click_link '編集'      
       # フォームに情報を入力する
       fill_in 'team_team_name', with: @team.affiliation
       fill_in 'team_affiliation', with: @team.team_name
@@ -96,8 +96,8 @@ RSpec.describe "編集", type: :system do
       # 班一覧ページへのボタンがないことを確認する
       expect(page).to have_no_content('班一覧')
     end
-    it 'ログインしていないと班詳細ページに遷移できない' do
-      # 班詳細ページに遷移する
+    it 'ログインしていないと班編集ページに遷移できない' do
+      # 班編集ページに遷移する
       visit edit_team_path(@team.id)
       # ログインページへ遷移したことを確認する
       expect(current_path).to eq(new_user_session_path)

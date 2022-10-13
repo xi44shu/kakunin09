@@ -1,20 +1,30 @@
+<p id="notice"><%= notice %></p>
+<h1>班一覧</h1>
 
-<header class="header">
-      <div class="nav__right">
-          <%= link_to "新規班作成", new_team_path, class: :nav__btn %>
-      </div>
+<table>
+  <thead>
+    <tr>
+      <th>チーム名</th>
+      <th>所属</th>
+      <th>状態</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<body>
-  <div class="trading_companies_index">
-    <div class="trading_companies_index_title">チーム名/所属/状態</div>
-      <% @teams.each do |team| %>
-        <div>
-          <%= link_to team.team_name, edit_team_path(team.id), class: :nav__btn %>/
-          <%= team.affiliation %>/
-          <% if team.work == true %>稼働中
-          <%else team.work == false%>休み  
-          <%end %>
-        </div>
-      <%end %>
-  </div>
-</body>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.team_name %></td>
+        <td><%= team.affiliation %></td>
+        <td><% if team.work == true %>稼働中
+            <%else team.work == false%>休み  
+            <%end %></td>
+        <td><%= link_to '編集', edit_team_path(team) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新しい班を登録', new_team_path %>
