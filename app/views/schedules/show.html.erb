@@ -34,9 +34,11 @@
         <td><%= @schedule.prime_contractor %></td>
         <td><%= @schedule.first_contact.name %></td>
         <td><%= @schedule.content %></td>
+        <% if user_signed_in? %>
         <td><%= link_to '変更', edit_schedule_path(@schedule.id),  class: :nav__btn  %></td>
         <td><%= link_to 'コピー', copy_schedule_path(@schedule.id),  class: :nav__btn  %></td>
         <td><%= link_to '削除', schedule_path(@schedule.id), method: :delete, data: { confirm: '本当に削除しますか?' },  class: :nav__btn  %></td>
+        <% end %>
       </tr>
   </tbody>
 </table>
