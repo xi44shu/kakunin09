@@ -1,0 +1,5 @@
+<h1>コピーした内容をもとに登録する</h1>
+<%= form_with model: @schedule, url: schedules_path, local: true do |f| %>
+<%= render partial: "hissu_form", locals: { f: f } %>
+<%= render partial: "ninni_form", locals: { f: f } %>
+<% end %>
