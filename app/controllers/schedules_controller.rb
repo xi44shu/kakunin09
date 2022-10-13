@@ -44,7 +44,11 @@ class SchedulesController < ApplicationController
       @schedule.delete
       redirect_to root_path
   end
-  
+
+  def copy
+    @schedule = Schedule.find(params[:id]).dup
+  end
+
   private
 
   def schedule_params
