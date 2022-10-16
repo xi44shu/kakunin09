@@ -1,3 +1,4 @@
+<h1>商社を登録する</h1>
 <%= form_with model: @trading_company, url: trading_companies_path, local: true do |f| %>
 <%= f.label :商社名を入力, class: 'lavel' %>
 <%= f.text_field :tc_name, class: 'tc_name-input', placeholder:"商社名" %>

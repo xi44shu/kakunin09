@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1>商社一覧</h1>
 
-<table>
+<table frame=”box” border=”1″>
   <thead>
     <tr>
       <th>商社名</th>
@@ -13,7 +13,7 @@
 
   <tbody>
     <% @trading_companies.each do |trading_company| %>
-    <% unless trading_company.id == 1 %>
+    <% unless trading_company.id == 1 || trading_company.id == 4%>
       <tr>
         <td><%= trading_company.tc_name %></td>
         <td><%= trading_company.tc_contact_person %></td>
