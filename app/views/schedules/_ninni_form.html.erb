@@ -1,7 +1,20 @@
 
-<div class="ninni_input">任意項目</div>
-<%= f.label :元請を入力, class: 'lavel' %>
-<%= f.text_area :prime_contractor, class: 'prime_contractor-input', placeholder:"元請名、担当者名、連絡先などを入力" %>
-<%= f.label :コメントを入力, class: 'lavel' %>
-<%= f.text_area :content, class: 'content-input', placeholder:"注意事項などを入力" %>
-<%= f.submit "登録する" %>
+<p id="notice"><%= notice %></p>
+<h3>任意項目</h3>
+<table frame=”box” border=”1″>
+  <thead>
+    <tr>
+      <th>元請</th>
+      <th>コメント</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= f.text_area :prime_contractor, class: 'prime_contractor-input', placeholder:"元請名、担当者名、連絡先などを入力" %></td>
+        <td><%= f.text_area :content, class: 'content-input', placeholder:"注意事項などを入力" %></td>
+        <td><%= f.submit "登録する" %></td>
+      </tr>
+  </tbody>
+</table>

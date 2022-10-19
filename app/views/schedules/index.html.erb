@@ -1,8 +1,8 @@
 
 <!-- 予約フォーム -->
+<p>予約日、班の他"---"の項目を選択して登録してください。"後で選択"はそのままでも登録できます。</p>
 <%= form_with model: @schedules, url: schedules_path, local: true do |f| %>
 <%= render partial: "hissu_form", locals: { f: f } %>
-<%= f.submit "登録する" %>
 <% end %>
 <!-- カレンダー表示部 -->
 <div class='calendarsbox'>

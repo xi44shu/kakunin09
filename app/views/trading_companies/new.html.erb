@@ -1,10 +1,28 @@
+
+<p id="notice"><%= notice %></p>
 <h1>商社を登録する</h1>
 <%= form_with model: @trading_company, url: trading_companies_path, local: true do |f| %>
-<%= f.label :商社名を入力, class: 'lavel' %>
-<%= f.text_field :tc_name, class: 'tc_name-input', placeholder:"商社名" %>
-<%= f.label :担当者名を入力, class: 'lavel' %>
-<%= f.text_field :tc_contact_person, class: 'tc_contact_person-input', placeholder:"担当者名" %>
-<%= f.label :電話番号を入力, class: 'lavel' %>
-<%= f.text_field :tc_telephone, class: 'tc_telephone-input', placeholder:"半角ハイフンなし" %>
-<%= f.submit "登録する" %>
-<% end %>
+<table frame=”box” border=”1″>
+  <thead>
+    <tr>
+      <th>商社名<%= f.label :商社名を入力, class: 'label' %></th>
+      <th>担当者<%= f.label :担当者名を入力, class: 'label' %></th>
+      <th>電話番号<%= f.label :電話番号を入力, class: 'label' %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= f.text_field :tc_name, class: 'tc_name-input', placeholder:"商社名を入力" %></td>
+        <td><%= f.text_field :tc_contact_person, class: 'tc_contact_person-input', placeholder:"担当者を入力" %></td>
+        <td><%= f.text_field :tc_telephone, class: 'tc_telephone-input', placeholder:"半角ハイフンなし" %></td>
+        <td><%= f.submit "登録する" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新しく商社を登録', new_trading_company_path %>

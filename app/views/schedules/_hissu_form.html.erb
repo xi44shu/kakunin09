@@ -1,19 +1,33 @@
-<div class="hissu_input">必須項目</div>
-<%= f.label :日付を選択, class: 'lavel' %>
-<%= f.date_field :scheduled_date, class: 'date-select' %>
-<%= f.label :施工班を選択, class: 'lavel' %>
-<%= f.collection_select(:team_id, Team.where(work: '1'), :id, :team_name, {}, {class:"team-select"}) %>
-<%= f.label :時間帯を選択, class: 'lavel' %>
-<%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class:"time_zone-select"}) %>
-<%= f.label :サイズを選択, class: 'lavel' %>
-<%= f.collection_select(:size_id, Size.all, :id, :name, {}, {class:"size-select"}) %>
-<%= f.label :予約確度を選択, class: 'lavel' %>
-<%= f.collection_select(:accuracy_id, Accuracy.all, :id, :name, {}, {class:"accuracy-select"}) %>
-<%= f.label :場所を選択, class: 'lavel' %>
-<%= f.collection_select(:mie_id, Mie.all, :id, :name, {}, {class:"mie-select"}) %>
-<%= f.label :連絡元を選択, class: 'lavel' %>
-<%= f.collection_select(:first_contact_id, FirstContact.all, :id, :name, {}, {class:"first_contact-select"}) %>
-<%= f.label :商社を選択, class: 'lavel' %>
-<%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_name, {}, {class:"team-select"}) %>
-<%= f.label :開始時間を選択, class: 'lavel' %>
-<%= f.collection_select(:start_time_id, StartTime.all, :id, :name, {}, {class:"start_time-select"}) %>
+<p id="notice"><%= notice %></p>
+<p>予約日、班の他"---"の項目を選択して登録してください。"後で選択"はそのままでも登録できます。</p>
+<table frame=”box” border=”1″>
+  <thead>
+    <tr>
+      <th>予約日</th>
+      <th>班</th>
+      <th>時間帯</th>
+      <th>場所</th>
+      <th>サイズ</th>
+      <th>予約確度</th>
+      <th>連絡元</th>
+      <th>開始時間</th>
+      <th>商社</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= f.date_field :scheduled_date, class: 'date-select' %></td>
+        <td><%= f.collection_select(:team_id, Team.where(work: '1'), :id, :team_name, {}, {class:"team-select"}) %></td>
+        <td><%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class:"time_zone-select"}) %></td>
+        <td><%= f.collection_select(:mie_id, Mie.all, :id, :name, {}, {class:"mie-select"}) %></td>
+        <td><%= f.collection_select(:size_id, Size.all, :id, :name, {}, {class:"size-select"}) %></td>
+        <td><%= f.collection_select(:accuracy_id, Accuracy.all, :id, :name, {}, {class:"accuracy-select"}) %></td>
+        <td><%= f.collection_select(:first_contact_id, FirstContact.all, :id, :name, {}, {class:"first_contact-select"}) %></td>
+        <td><%= f.collection_select(:start_time_id, StartTime.all, :id, :name, {}, {class:"start_time-select"}) %></td>
+        <td><%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_name, {}, {class:"team-select"}) %></td>
+        <td><%= f.submit "登録する" %></td>
+      </tr>
+  </tbody>
+</table>

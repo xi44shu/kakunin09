@@ -13,8 +13,8 @@
       <th>サイズ</th>
       <th>予約確度</th>
       <th>商社</th>
-      <th>元請</th>
       <th>連絡元</th>
+      <th>元請</th>
       <th>コメント</th>
       <th colspan="3"></th>
     </tr>
@@ -31,8 +31,8 @@
         <td><%= @schedule.size.name %></td>
         <td><%= @schedule.accuracy.name %></td>
         <td><%= @schedule.trading_company.tc_name %></td>
-        <td><%= @schedule.prime_contractor %></td>
         <td><%= @schedule.first_contact.name %></td>
+        <td><%= @schedule.prime_contractor %></td>
         <td><%= @schedule.content %></td>
         <% if user_signed_in? %>
         <td><%= link_to '変更', edit_schedule_path(@schedule.id),  class: :nav__btn  %></td>
