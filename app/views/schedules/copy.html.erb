@@ -3,3 +3,5 @@
 <%= render partial: "hissu_form", locals: { f: f } %>
 <%= render partial: "ninni_form", locals: { f: f } %>
 <% end %>
+<!-- カレンダー表示部 -->
+<%= render partial: "calendar", locals: { schedules: @schedules, week_days: @week_days, teams: @teams,} %>

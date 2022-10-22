@@ -1,12 +1,10 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :copy]
-
+  before_action :get_week, only: [:index, :new, :show, :edit, :update, :copy]
+  before_action :get_calenar, only: [:index, :new, :show, :edit, :update, :copy]
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   def index
-    get_week    
-    @teams = Team.where(work: '1')
-    @schedules = Schedule.where(scheduled_date: @todays_date..@todays_date + 6)
-
   end
 
   def new
@@ -23,15 +21,12 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @schedule = Schedule.find(params[:id])
   end
 
   def edit
-    @schedule = Schedule.find(params[:id])
   end
 
   def update
-    @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_params)
       redirect_to root_path
     else
@@ -40,8 +35,7 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-      @schedule = Schedule.find(params[:id])
-      @schedule.delete
+        @schedule.delete
       redirect_to root_path
   end
 
@@ -75,5 +69,14 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def get_calenar
+    # カレンダー表示に必要なデータ
+    @teams = Team.where(work: '1')
+    @schedules = Schedule.where(scheduled_date: @todays_date..@todays_date + 6)
+  end
+
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
 
 end
