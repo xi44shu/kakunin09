@@ -21,6 +21,21 @@ crumb :schedule_new do
   link "新規予約", new_schedule_path
   parent :root
 end
+
+crumb :team_index do
+  link "班一覧", teams_path
+  parent :root
+end
+
+crumb :team_new do
+  link "班登録", new_team_path
+  parent :team_index
+end
+
+crumb :team_edit do |team|
+  link "班編集(#{team.team_name})", edit_team_path(team)
+  parent :team_index, team
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end

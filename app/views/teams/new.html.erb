@@ -1,6 +1,8 @@
+<% breadcrumb :team_new, @team %>
+
 <p id="notice"><%= notice %></p>
-<h1>班内容を変更する</h1>
-<%= form_with model: @team, url:team_path, local: true do |f| %>
+<h1>班を登録する</h1>
+<%= form_with model: @team, url:teams_path, local: true do |f| %>
 <table frame=”box” border=”1″>
   <thead>
     <tr>
@@ -24,6 +26,3 @@
     <% end %>
   </tbody>
 </table>
-<br>
-修正したい箇所をクリックして修正してください。<br>
-状態を変更する際は、既存の予約に注意してください。
