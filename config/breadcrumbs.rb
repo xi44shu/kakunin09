@@ -36,6 +36,21 @@ crumb :team_edit do |team|
   link "班編集(#{team.team_name})", edit_team_path(team)
   parent :team_index, team
 end
+
+crumb :trading_company_index do
+  link "商社一覧", trading_companies_path
+  parent :root
+end
+
+crumb :trading_company_new do
+  link "商社登録", new_trading_company_path
+  parent :trading_company_index
+end
+
+crumb :trading_company_edit do |trading_company|
+  link "商社編集(#{trading_company.tc_name})", edit_trading_company_path(trading_company)
+  parent :trading_company_index, trading_company
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end
