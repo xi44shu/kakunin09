@@ -1,7 +1,26 @@
 crumb :root do
-  link "Home", root_path
+  link "トップページ", root_path
 end
 
+crumb :schedule_show do |schedule|
+  link "予約詳細(#{schedule.id})", schedule_path(schedule)
+  parent :root
+end
+
+crumb :schedule_edit do |schedule|
+  link "予約編集", edit_schedule_path(schedule)
+  parent :schedule_show, schedule
+end
+
+crumb :schedule_copy do
+  link "コピーして登録", copy_schedule_path
+  parent :root
+end
+
+crumb :schedule_new do
+  link "新規予約", new_schedule_path
+  parent :root
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end

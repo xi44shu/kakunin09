@@ -1,3 +1,5 @@
+<% breadcrumb :schedule_edit, @schedule %>
+
 <h1>予約内容を変更する</h1>
 <%= form_with model: @schedule, url: schedule_path, method: :put, local: true do |f| %>
 <%= render partial: "hissu_form", locals: { f: f } %>
